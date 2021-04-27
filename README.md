@@ -13,5 +13,6 @@ Ethereum Playground
 ## Docs
 
 * [ganache](https://www.trufflesuite.com/ganache)
-* [solidity](https://soliditylang.org/)
-* [truffle](https://www.trufflesuite.com/)
+* [metamask](https://metamask.io)
+* [solidity](https://soliditylang.org)
+* [truffle](https://www.trufflesuite.com)
