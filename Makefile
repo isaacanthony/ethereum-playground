@@ -1,20 +1,14 @@
 build:
-	@docker build -t ethereum-playground .
+	@docker-compose build
 
 start:
-	@docker run \
-		--detach \
-		--name ethereum-playground \
-		--publish 3000:3000 \
-		--volume $(PWD):/src \
-		ethereum-playground
+	@docker-compose up --detach
 
 bash:
-	@docker exec -it ethereum-playground sh
+	@docker exec -it node sh
 
 logs:
-	@docker logs ethereum-playground
+	@docker logs ganache
 
 stop:
-	@docker stop ethereum-playground
-	@docker rm ethereum-playground
+	@docker-compose down --remove-orphans
