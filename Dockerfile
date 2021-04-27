@@ -3,6 +3,7 @@ WORKDIR /src
 
 RUN npm install -g \
   ganache-cli@6.12.2 \
+  lite-server@2.6.1 \
   npm@7.11.1 \
   truffle@5.3.3
 

@@ -5,6 +5,7 @@ start:
 	@docker run \
 		--detach \
 		--name ethereum-playground \
+		--publish 3000:3000 \
 		--volume $(PWD):/src \
 		ethereum-playground
 
