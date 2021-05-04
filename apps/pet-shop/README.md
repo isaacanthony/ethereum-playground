@@ -5,9 +5,9 @@ Truffle's Pet Shop Tutorial
 ## Usage
 
 1. `make bash`
-2. `cd pet-shop/src`
+2. `cd pet-shop`
 3. `lite-server`
-4. `http://localhost:3000`
+4. `http://node:3000`
 
 ## Docs
 * [github](https://github.com/truffle-box/pet-shop-box)

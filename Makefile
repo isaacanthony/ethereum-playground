@@ -3,6 +3,8 @@ build:
 
 start:
 	@docker-compose up --detach
+	@echo
+	@echo "firefox \t http://localhost:5800"
 
 bash:
 	@docker exec -it node sh

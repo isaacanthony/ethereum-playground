@@ -7,6 +7,9 @@ Ethereum Playground
 * `make build`
 * `make start`
 * `make bash`
+  * `truffle compile`
+  * `truffle test`
+  * `truffle migrate`
 * `make logs`
 * `make stop`
 
