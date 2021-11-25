@@ -1,14 +1,16 @@
 pragma solidity ^0.5.0;
 
 contract ENS {
-  mapping (string => address) ens;
+  uint private cost = 5 wei;
+  mapping (string => address) private ens;
 
-  function setAddress(string memory _name) public {
+  function setAddress(string calldata _name) external payable {
+    require(msg.value >= cost);
     require(ens[_name] == address(0));
     ens[_name] = msg.sender;
   }
 
-  function getAddress(string memory _name) public view returns (address) {
+  function getAddress(string calldata _name) external view returns (address) {
     return ens[_name];
   }
 }
