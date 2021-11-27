@@ -2,11 +2,10 @@ const ENS = artifacts.require("ENS");
 
 contract("ENS", (accounts) => {
   let ens;
-  let name;
+  let name = "google.eth";
 
-  before(async () => {
+  beforeEach(async () => {
     ens = await ENS.deployed();
-    name = "google.eth";
   });
 
   describe("setting new ENS name", async () => {
@@ -49,6 +48,41 @@ contract("ENS", (accounts) => {
           error.message,
           "Returned error: VM Exception while processing transaction: revert",
         );
+      }
+    });
+  });
+
+  describe("setting new ENS cost", async () => {
+    it("sets new ENS cost", async () => {
+      assert.equal(await ens.getCost(), 5);
+      await ens.setCost(10, {from: accounts[0]});
+      assert.equal(await ens.getCost(), 10);
+    });
+
+    it("doesn't allow zero cost", async () => {
+      try {
+        await ens.setCost(0, {from: accounts[0]});
+        assert(false);
+      } catch (error) {
+        assert(true);
+      }
+    });
+
+    it("doesn't allow negative cost", async () => {
+      try {
+        await ens.setCost(-1, {from: accounts[0]});
+        assert(false);
+      } catch (error) {
+        assert(true);
+      }
+    });
+
+    it("doesn't allow non-owner to set cost", async () => {
+      try {
+        await ens.setCost(10, {from: accounts[1]});
+        assert(false);
+      } catch (error) {
+        assert(true);
       }
     });
   });
