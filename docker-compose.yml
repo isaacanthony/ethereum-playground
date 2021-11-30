@@ -15,6 +15,7 @@ services:
   ganache:
     image: trufflesuite/ganache-cli:v6.12.2
     container_name: ganache
+    command: --chainId 1336
 
   node:
     build:

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>ENS</title>
+  </head>
+  <body>
+    <h1>ENS</h1>
+
+    <h3>Search ENS...</h3>
+    <input id="search-input" type="text">
+    <button onclick="search()">Search</button>
+    <p id="search-results"></p>
+
+    <h3>Update ENS...</h3>
+    <p>TODO</p>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" integrity="sha512-5erpERW8MxcHDF7Xea9eBQPiRtxbse70pFcaHJuOhdEBQeAxGQjUwgJbuBDWve+xP/u5IoJbKjyJk50qCnMD7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+      const address = '0xc39B277116efE18E2891e9CF6bc33Ae7a9Dcac44';
+      var contract = null;
+
+      const init = () => {
+        let web3 = new Web3(window.ethereum);
+        let abi = null;
+
+        $.ajax({
+          'async': false,
+          'global': false,
+          'url': '/ENS.json',
+          'dataType': "json",
+          'success': (data) => {
+            abi = data.abi;
+          }
+        });
+
+        contract = new web3.eth.Contract(abi, address);
+      };
+
+      const search = async () => {
+        let domain = $('#search-input').text();
+        let result = await contract.methods.getAddress(domain).call();
+        $('#search-results').html(result);
+      };
+
+      init();
+    </script>
+  </body>
+</html>

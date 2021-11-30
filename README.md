@@ -27,3 +27,4 @@ Ethereum Playground
 * [metamask](https://metamask.io)
 * [solidity](https://soliditylang.org)
 * [truffle](https://www.trufflesuite.com)
+* [web3.js](https://web3js.readthedocs.io/en/v1.5.2/index.html)
