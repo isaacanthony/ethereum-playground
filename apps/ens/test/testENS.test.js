@@ -50,6 +50,13 @@ contract("ENS", (accounts) => {
         );
       }
     });
+
+    it("allows writing multiple different ENS names", async () => {
+      await ens.setAddress("2_" + name, {from: accounts[0], value: 5});
+      assert.equal(await ens.getAddress("2_" + name), accounts[0]);
+      await ens.setAddress("3_" + name, {from: accounts[0], value: 5});
+      assert.equal(await ens.getAddress("3_" + name), accounts[0]);
+    });
   });
 
   describe("setting new ENS cost", async () => {

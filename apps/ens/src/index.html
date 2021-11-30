@@ -8,12 +8,12 @@
     <h1>ENS</h1>
 
     <h3>Search ENS...</h3>
-    <input id="search-input" type="text">
+    <input id="search-input" type="text" onkeypress="empty('#search-results')">
     <button onclick="search()">Search</button>
     <p id="search-results"></p>
 
     <h3>Update ENS...</h3>
-    <input id="update-input" type="text">
+    <input id="update-input" type="text" onkeypress="empty('#update-results')">
     <button onclick="update()">Save</button>
     <p id="update-results"></p>
 
@@ -21,44 +21,42 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" integrity="sha512-5erpERW8MxcHDF7Xea9eBQPiRtxbse70pFcaHJuOhdEBQeAxGQjUwgJbuBDWve+xP/u5IoJbKjyJk50qCnMD7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
-      const address = '0xc39B277116efE18E2891e9CF6bc33Ae7a9Dcac44';
+      const address = '0xB380246B6462afEc40AB3a15D645598683050246';
       var web3 = null;
       var contract = null;
 
       const init = () => {
-        web3 = new Web3(window.ethereum);
-        let abi = null;
-
-        $.ajax({
-          'async': false,
-          'global': false,
-          'url': '/ENS.json',
-          'dataType': "json",
-          'success': (data) => {
-            abi = data.abi;
-          }
+        return $.getJSON('/ENS.json', (result) => {
+          web3 = new Web3(window.ethereum);
+          contract = new web3.eth.Contract(result.abi, address);
         });
-
-        contract = new web3.eth.Contract(abi, address);
       };
 
-      const search = async () => {
-        let domain = $('#search-input').text();
-        let result = await contract.methods.getAddress(domain).call();
-        $('#search-results').html(result);
+      const empty = (query) => {
+        $(query).empty();
       };
 
-      const update = async () => {
-        let domain = $('#update-input').text();
+      const search = () => {
+        let domain = $('#search-input').val();
 
-        await contract.methods
+        return contract
+          .methods
+          .getAddress(domain)
+          .call({from: window.ethereum.selectedAddress})
+          .then(result => $('#search-results').html(result));
+      };
+
+      const update = () => {
+        let domain = $('#update-input').val();
+
+        return contract
+          .methods
           .setAddress(domain)
           .send({
             from: window.ethereum.selectedAddress,
             value: web3.utils.toWei('5', 'wei'),
-          });
-
-        $('#update-results').html('Success!');
+          })
+          .on('receipt', () => $('#update-results').html('Success!'));
       };
 
       init();
