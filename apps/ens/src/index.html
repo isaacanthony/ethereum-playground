@@ -13,17 +13,20 @@
     <p id="search-results"></p>
 
     <h3>Update ENS...</h3>
-    <p>TODO</p>
+    <input id="update-input" type="text">
+    <button onclick="update()">Save</button>
+    <p id="update-results"></p>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" integrity="sha512-5erpERW8MxcHDF7Xea9eBQPiRtxbse70pFcaHJuOhdEBQeAxGQjUwgJbuBDWve+xP/u5IoJbKjyJk50qCnMD7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <script>
       const address = '0xc39B277116efE18E2891e9CF6bc33Ae7a9Dcac44';
+      var web3 = null;
       var contract = null;
 
       const init = () => {
-        let web3 = new Web3(window.ethereum);
+        web3 = new Web3(window.ethereum);
         let abi = null;
 
         $.ajax({
@@ -43,6 +46,19 @@
         let domain = $('#search-input').text();
         let result = await contract.methods.getAddress(domain).call();
         $('#search-results').html(result);
+      };
+
+      const update = async () => {
+        let domain = $('#update-input').text();
+
+        await contract.methods
+          .setAddress(domain)
+          .send({
+            from: window.ethereum.selectedAddress,
+            value: web3.utils.toWei('5', 'wei'),
+          });
+
+        $('#update-results').html('Success!');
       };
 
       init();
