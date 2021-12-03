@@ -8,6 +8,7 @@ Ethereum Playground
 * `make start`
 * `make bash`
   * `cd {{ app }}`
+  * `npm run solhint`
   * `truffle compile`
   * `truffle test`
   * `truffle migrate`
