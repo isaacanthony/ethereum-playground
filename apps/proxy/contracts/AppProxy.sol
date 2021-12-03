@@ -7,15 +7,15 @@ import "@openzeppelin/contracts/proxy/Proxy.sol";
 contract AppProxy is Ownable, Proxy {
   address private delegateAddress;
 
-  function _implementation() internal view virtual override returns (address) {
-    return delegateAddress;
-  }
-
   function getAddress() public view onlyOwner returns (address) {
     return delegateAddress;
   }
 
   function setAddress(address _addr) public onlyOwner {
     delegateAddress = _addr;
+  }
+
+  function _implementation() internal view virtual override returns (address) {
+    return delegateAddress;
   }
 }

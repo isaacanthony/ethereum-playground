@@ -23,10 +23,11 @@ contract('AppProxy', (accounts) => {
     });
   });
 
-  describe('#fallback', async () => {
+  describe('#delegate', async () => {
     it('proxies function call to delegate contract', async () => {
       await proxy.setAddress(app.address);
-      assert.equal(await proxy._fallback('add(1, 2)'), 3);
+      let proxyInterface = new web3.eth.Contract(app.abi, proxy.address);
+      assert.equal(await proxyInterface.methods.add(1, 2).call(), 3);
     });
   });
 });
