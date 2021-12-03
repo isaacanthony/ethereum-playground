@@ -12,8 +12,8 @@ contract ENS is Ownable {
   }
 
   function setAddress(string calldata _name) external payable {
-    require(msg.value >= cost);
-    require(ens[_name] == address(0));
+    require(msg.value >= cost, "Insufficient funds");
+    require(ens[_name] == address(0), "Unauthorized");
     ens[_name] = msg.sender;
   }
 
@@ -22,7 +22,7 @@ contract ENS is Ownable {
   }
 
   function setCost(uint _cost) public onlyOwner {
-    require(_cost > 0);
+    require(_cost > 0, "Invalid cost");
     cost = _cost;
   }
 }

@@ -16,22 +16,18 @@ contract("ENS", (accounts) => {
     it("fails if no ETH sent", async () => {
       try {
         await ens.setAddress(name, {from: accounts[0]});
+        assert.isTrue(false);
       } catch (error) {
-        assert.equal(
-          error.message,
-          "Returned error: VM Exception while processing transaction: revert",
-        );
+        assert.isTrue(true);
       }
     });
 
     it("fails if not enough ETH sent", async () => {
       try {
         await ens.setAddress(name, {from: accounts[0], value: 1});
+        assert.isTrue(false);
       } catch (error) {
-        assert.equal(
-          error.message,
-          "Returned error: VM Exception while processing transaction: revert",
-        );
+        assert.isTrue(true);
       }
     });
 
@@ -43,11 +39,9 @@ contract("ENS", (accounts) => {
     it("doesn't allow overwriting existing ENS name", async () => {
       try {
         await ens.setAddress(name, {from: accounts[1], value: 5});
+        assert.isTrue(false);
       } catch (error) {
-        assert.equal(
-          error.message,
-          "Returned error: VM Exception while processing transaction: revert",
-        );
+        assert.isTrue(true);
       }
     });
 
@@ -69,27 +63,27 @@ contract("ENS", (accounts) => {
     it("doesn't allow zero cost", async () => {
       try {
         await ens.setCost(0, {from: accounts[0]});
-        assert(false);
+        assert.isTrue(false);
       } catch (error) {
-        assert(true);
+        assert.isTrue(true);
       }
     });
 
     it("doesn't allow negative cost", async () => {
       try {
         await ens.setCost(-1, {from: accounts[0]});
-        assert(false);
+        assert.isTrue(false);
       } catch (error) {
-        assert(true);
+        assert.isTrue(true);
       }
     });
 
     it("doesn't allow non-owner to set cost", async () => {
       try {
         await ens.setCost(10, {from: accounts[1]});
-        assert(false);
+        assert.isTrue(false);
       } catch (error) {
-        assert(true);
+        assert.isTrue(true);
       }
     });
   });

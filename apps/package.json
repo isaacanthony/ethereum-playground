@@ -1,0 +1,5 @@
+{
+  "scripts": {
+    "solhint": "solhint **/contracts/*.sol"
+  }
+}
