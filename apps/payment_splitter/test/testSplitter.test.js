@@ -16,8 +16,8 @@ contract("Splitter", (accounts) => {
     assert.equal(await web3.eth.getBalance(splitter.address), 100);
 
     // Release funds.
-    let originalBalance1 = await web3.eth.getBalance(accounts[1]);
-    let originalBalance2 = await web3.eth.getBalance(accounts[2]);
+    let oldBalance1 = new web3.utils.BN(await web3.eth.getBalance(accounts[1]));
+    let oldBalance2 = new web3.utils.BN(await web3.eth.getBalance(accounts[2]));
 
     assert.equal(await splitter.totalReleased(), 0);
     assert.equal(await splitter.released(accounts[1]), 0);
@@ -31,10 +31,10 @@ contract("Splitter", (accounts) => {
     assert.equal(await splitter.released(accounts[2]), 50);
 
     // Confirm payments are received.
-    let newBalance1 = await web3.eth.getBalance(accounts[1]);
-    let newBalance2 = await web3.eth.getBalance(accounts[2]);
+    let newBalance1 = new web3.utils.BN(await web3.eth.getBalance(accounts[1]));
+    let newBalance2 = new web3.utils.BN(await web3.eth.getBalance(accounts[2]));
 
-    assert.isTrue(originalBalance1 < newBalance1);
-    assert.isTrue(originalBalance2 < newBalance2);
+    assert.equal(newBalance1.sub(oldBalance1).toString(), "50");
+    assert.equal(newBalance2.sub(oldBalance2).toString(), "50");
   });
 });
