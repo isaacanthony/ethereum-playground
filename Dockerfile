@@ -1,4 +1,4 @@
-FROM node:17.0.0-alpine3.14
+FROM node:17.2.0-alpine3.14
 WORKDIR /apps
 
 RUN npm install -g \
