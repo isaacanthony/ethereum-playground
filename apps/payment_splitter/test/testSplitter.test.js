@@ -1,7 +1,7 @@
-const Splitter = artifacts.require("Splitter");
+const Splitter = artifacts.require('Splitter');
 
-contract("Splitter", (accounts) => {
-  it("allows splitting of funds", async () => {
+contract('Splitter', (accounts) => {
+  it('allows splitting of funds', async () => {
     // Set payees and shares.
     let splitter = await Splitter.new([accounts[1], accounts[2]], [50, 50]);
     assert.equal(await splitter.payee(0), accounts[1])
@@ -34,7 +34,7 @@ contract("Splitter", (accounts) => {
     let newBalance1 = new web3.utils.BN(await web3.eth.getBalance(accounts[1]));
     let newBalance2 = new web3.utils.BN(await web3.eth.getBalance(accounts[2]));
 
-    assert.equal(newBalance1.sub(oldBalance1).toString(), "50");
-    assert.equal(newBalance2.sub(oldBalance2).toString(), "50");
+    assert.equal(newBalance1.sub(oldBalance1).toString(), '50');
+    assert.equal(newBalance2.sub(oldBalance2).toString(), '50');
   });
 });
