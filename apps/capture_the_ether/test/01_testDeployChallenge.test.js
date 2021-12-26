@@ -1,15 +1,15 @@
 const DeployChallenge = artifacts.require('DeployChallenge');
 
 contract('DeployChallenge', (accounts) => {
-  let deployChallenge;
+  let target;
 
   beforeEach(async () => {
-    deployChallenge = await DeployChallenge.deployed();
+    target = await DeployChallenge.deployed();
   });
 
   describe('#isComplete', async () => {
     it('returns true', async () => {
-      assert.isTrue(await deployChallenge.isComplete());
+      assert.isTrue(await target.isComplete());
     });
   });
 });
