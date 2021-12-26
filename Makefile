@@ -1,4 +1,5 @@
 build:
+	@docker-compose pull
 	@docker-compose build
 
 start:

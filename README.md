@@ -24,6 +24,7 @@ Ethereum Playground
 
 ## Docs
 
+* [capture-the-ether](https://capturetheether.com)
 * [ganache](https://www.trufflesuite.com/ganache)
 * [metamask](https://metamask.io)
 * [solidity](https://soliditylang.org)
