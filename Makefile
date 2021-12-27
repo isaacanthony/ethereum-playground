@@ -14,4 +14,4 @@ logs:
 	@docker logs ganache
 
 stop:
-	@docker-compose down --remove-orphans
+	@docker-compose down --remove-orphans --volumes
