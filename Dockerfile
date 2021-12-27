@@ -2,6 +2,7 @@ FROM node:17.2.0-alpine3.14
 WORKDIR /apps
 
 RUN npm install -g \
+  ethlint@1.2.5 \
   lite-server@2.6.1 \
   @openzeppelin/contracts@4.4.0 \
   solhint@3.3.6 \
