@@ -4,7 +4,7 @@ contract('Splitter', (accounts) => {
   it('allows splitting of funds', async () => {
     // Set payees and shares.
     let splitter = await Splitter.new([accounts[1], accounts[2]], [50, 50]);
-    assert.equal(await splitter.payee(0), accounts[1])
+    assert.equal(await splitter.payee(0), accounts[1]);
     assert.equal(await splitter.payee(1), accounts[2]);
     assert.equal(await splitter.totalShares(), 100);
     assert.equal(await splitter.shares(accounts[1]), 50);

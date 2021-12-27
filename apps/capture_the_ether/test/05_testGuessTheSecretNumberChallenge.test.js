@@ -29,7 +29,7 @@ contract('GuessTheSecretNumberChallenge', (accounts) => {
         });
 
         if (guessHash === targetHash) {
-          break
+          break;
         }
       }
 

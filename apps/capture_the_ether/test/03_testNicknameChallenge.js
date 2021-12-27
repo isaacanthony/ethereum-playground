@@ -12,13 +12,13 @@ contract('NicknameChallenge', (accounts) => {
       assert.equal(await target.nicknameOf(accounts[0]), 0);
 
       await target.setNickname(
-        web3.utils.utf8ToHex("testNickname"),
+        web3.utils.utf8ToHex('testNickname'),
         {from: accounts[0]},
       );
 
       assert.equal(
         web3.utils.hexToUtf8(await target.nicknameOf(accounts[0])),
-        "testNickname",
+        'testNickname',
       );
     });
   });

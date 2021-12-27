@@ -1,7 +1,8 @@
 {
   "scripts": {
+    "eslint": "eslint **/",
     "ethlint": "solium --no-soliumignore -d **/contracts/",
-    "linter": "npm run ethlint && npm run solhint",
+    "linter": "npm run eslint && npm run ethlint && npm run solhint",
     "solhint": "solhint **/contracts/*.sol"
   }
 }
