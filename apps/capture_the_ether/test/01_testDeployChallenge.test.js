@@ -4,7 +4,7 @@ contract('DeployChallenge', (accounts) => {
   let target;
 
   beforeEach(async () => {
-    target = await DeployChallenge.deployed();
+    target = await DeployChallenge.new();
   });
 
   describe('#isComplete', async () => {
