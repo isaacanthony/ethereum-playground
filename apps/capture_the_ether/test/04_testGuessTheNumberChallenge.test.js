@@ -18,7 +18,7 @@ contract('GuessTheNumberChallenge', (accounts) => {
 
       assert.isFalse(await target.isComplete());
 
-      await target.guess(42, {
+      await target.guess(await target.answer(), {
         from: accounts[0],
         value: web3.utils.toWei('1', 'ether'),
       });

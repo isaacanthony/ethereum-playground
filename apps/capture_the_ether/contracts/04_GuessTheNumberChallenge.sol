@@ -1,7 +1,7 @@
 pragma solidity ^0.4.21;
 
 contract GuessTheNumberChallenge {
-    uint8 private answer = 42;
+    uint8 public answer = 42;
 
     function GuessTheNumberChallenge() public payable {
         // solhint-disable-next-line reason-string
