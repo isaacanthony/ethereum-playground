@@ -1,2 +1,5 @@
 build
-TODO.md
+node_modules
+package-lock.json
+secrets.json
+todo.md
