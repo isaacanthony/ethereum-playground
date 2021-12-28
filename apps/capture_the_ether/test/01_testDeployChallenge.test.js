@@ -9,7 +9,7 @@ contract('DeployChallenge', (accounts) => {
 
   describe('#isComplete', async () => {
     it('returns true', async () => {
-      assert.isTrue(await target.isComplete());
+      expect(await target.isComplete()).to.be.true;
     });
   });
 });

@@ -9,17 +9,18 @@ contract('NicknameChallenge', (accounts) => {
 
   describe('#setNickname', async () => {
     it('updates state', async () => {
-      assert.equal(await target.nicknameOf(accounts[0]), 0);
+      expect(
+        web3.utils.toBN(await target.nicknameOf(accounts[0])).toNumber()
+      ).to.equal(0);
 
       await target.setNickname(
         web3.utils.utf8ToHex('testNickname'),
         {from: accounts[0]},
       );
 
-      assert.equal(
-        web3.utils.hexToUtf8(await target.nicknameOf(accounts[0])),
-        'testNickname',
-      );
+      expect(
+        web3.utils.hexToUtf8(await target.nicknameOf(accounts[0]))
+      ).to.equal('testNickname');
     });
   });
 });

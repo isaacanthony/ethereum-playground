@@ -9,9 +9,9 @@ contract('CallMeChallenge', (accounts) => {
 
   describe('#callme', async () => {
     it('updates state', async () => {
-      assert.isFalse(await target.isComplete());
+      expect(await target.isComplete()).to.be.false;
       await target.callme();
-      assert.isTrue(await target.isComplete());
+      expect(await target.isComplete()).to.be.true;
     });
   });
 });

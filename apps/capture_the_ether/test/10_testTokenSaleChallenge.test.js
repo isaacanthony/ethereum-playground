@@ -11,10 +11,9 @@ contract('TokenSaleChallenge', (accounts) => {
 
   describe('#isComplete', async () => {
     it('returns true', async () => {
-      assert.isFalse(await target.isComplete());
+      expect(await target.isComplete()).to.be.false;
 
-      await target.buy(10, {value: web3.utils.toWei('10', 'ether')});
-
+      await target.buy(2, {value: web3.utils.toWei('2', 'ether')});
       await Promise.all([target.sell(1), target.sell(1)]);
 
       // console.log(

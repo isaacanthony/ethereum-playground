@@ -33,24 +33,21 @@ contract('GuessTheSecretNumberChallenge', (accounts) => {
         }
       }
 
-      assert.isFalse(await target.isComplete());
+      expect(await target.isComplete()).to.be.false;
 
       await target.guess(guessInt, {
         from: accounts[0],
         value: web3.utils.toWei('1', 'ether'),
       });
 
-      assert.isTrue(await target.isComplete());
+      expect(await target.isComplete()).to.be.true;
 
       const newBalance = web3.utils.fromWei(
         await web3.eth.getBalance(accounts[0]),
         'ether',
       );
 
-      assert.equal(
-        Math.floor(oldBalance) + 1,
-        Math.floor(newBalance),
-      );
+      expect(Math.floor(oldBalance) + 1).to.equal(Math.floor(newBalance));
     });
   });
 });
