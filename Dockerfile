@@ -9,4 +9,5 @@ RUN npm install -g \
   solhint@3.3.6 \
   truffle@5.4.22
 
+USER node
 ENTRYPOINT ["tail", "-f", "/dev/null"]
