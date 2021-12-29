@@ -3,8 +3,11 @@
   "scripts": {
     "eslint": "eslint --no-error-on-unmatched-pattern **/",
     "ethlint": "solium --no-soliumignore -d **/contracts/",
-    "install": "yarn add @truffle/hdwallet-provider@2.0.0",
     "linter": "yarn run eslint && yarn run ethlint && yarn run solhint",
     "solhint": "solhint **/contracts/*.sol"
+  },
+  "dependencies": {
+    "@chainlink/contracts": "0.3.0",
+    "@truffle/hdwallet-provider": "2.0.0"
   }
 }
