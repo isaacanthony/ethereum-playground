@@ -1,8 +1,10 @@
 {
+  "license": "MIT",
   "scripts": {
-    "eslint": "eslint **/",
+    "eslint": "eslint --no-error-on-unmatched-pattern **/",
     "ethlint": "solium --no-soliumignore -d **/contracts/",
-    "linter": "npm run eslint && npm run ethlint && npm run solhint",
+    "install": "yarn add @truffle/hdwallet-provider@2.0.0",
+    "linter": "yarn run eslint && yarn run ethlint && yarn run solhint",
     "solhint": "solhint **/contracts/*.sol"
   }
 }

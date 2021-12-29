@@ -26,6 +26,7 @@ Ethereum Playground
 
 * [capture-the-ether](https://capturetheether.com)
 * [ganache](https://www.trufflesuite.com/ganache)
+* [kovan-etherscan](https://kovan.etherscan.io)
 * [metamask](https://metamask.io)
 * [solidity](https://soliditylang.org)
 * [truffle](https://www.trufflesuite.com)
