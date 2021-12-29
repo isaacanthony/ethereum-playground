@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>OpenSea</title>
+</head>
+<body>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.24.0/axios.min.js" integrity="sha512-u9akINsQsAkG9xjc1cnGF4zw5TFDwkxuc9vUp5dltDWYCSmyd0meygbvgXrlc/z7/o4a19Fb5V0OUE58J7dcyw==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/web3/1.6.1/web3.min.js" integrity="sha512-5erpERW8MxcHDF7Xea9eBQPiRtxbse70pFcaHJuOhdEBQeAxGQjUwgJbuBDWve+xP/u5IoJbKjyJk50qCnMD7A==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+  <script>
+    (() => {
+      const address = '0x7dca125b1e805dc88814aed7ccc810f677d3e1db';
+
+      axios.get('/secrets.json').then((response) => {
+        let projectId = response.data.projectId;
+
+        let web3 = new Web3(
+          new Web3.providers.HttpProvider(
+            `https://rinkeby.infura.io/v3/${projectId}`
+          )
+        );
+
+        axios.get('/NFT.json').then((response) => {
+          let contract = new web3.eth.Contract(response.data.abi, address);
+
+          for (let i = 10; i < 12; i++) {
+            contract
+              .methods
+              .tokenURI(10)
+              .call({from: window.ethereum.selectedAddress})
+              .then((url) => {
+                axios.get(url).then((response) => {
+                  console.log(response);
+                });
+              });
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
