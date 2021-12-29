@@ -3,7 +3,8 @@
   "scripts": {
     "eslint": "eslint --no-error-on-unmatched-pattern **/",
     "ethlint": "solium --no-soliumignore -d **/contracts/",
-    "linter": "yarn run eslint && yarn run ethlint && yarn run solhint",
+    "jshint": "jshint **/migrations **/test",
+    "linter": "yarn run eslint && yarn run jshint && yarn run ethlint && yarn run solhint",
     "solhint": "solhint **/contracts/*.sol"
   },
   "dependencies": {

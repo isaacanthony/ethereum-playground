@@ -9,6 +9,7 @@ RUN yarn global add \
   @chainlink/contracts@0.3.0 \
   eslint@8.5.0 \
   ethlint@1.2.5 \
+  jshint@2.13.2 \
   lite-server@2.6.1 \
   @openzeppelin/contracts@4.4.1 \
   solhint@3.3.6 \
