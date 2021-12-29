@@ -1,0 +1,12 @@
+{
+  "license": "MIT",
+  "scripts": {
+    "app": "lite-server",
+    "proxy": "node src/proxy.js"
+  },
+  "dependencies": {
+    "axios": "0.24.0",
+    "cors": "2.8.5",
+    "express": "4.17.2"
+  }
+}
