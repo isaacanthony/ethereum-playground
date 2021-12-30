@@ -22,4 +22,5 @@ module.exports = {
       network_id: 42,
     },
   },
+  plugins: ['solidity-coverage'],
 };

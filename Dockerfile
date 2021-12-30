@@ -12,6 +12,7 @@ RUN yarn global add \
   jshint@2.13.2 \
   lite-server@2.6.1 \
   solhint@3.3.6 \
+  solidity-coverage@0.7.17 \
   truffle@5.4.26
 
 USER node

@@ -1,6 +1,8 @@
 artifacts
 build
 cache
+coverage
+coverage.json
 node_modules
 package-lock.json
 secrets.json
